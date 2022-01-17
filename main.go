@@ -1,8 +1,18 @@
 package main
 
-import(
-  "log"
+import (
+	"github.com/beego/beego/v2/server/web"
 )
+
+type MainController struct {
+	web.Controller
+}
+
+func (this *MainController) Get() {
+	this.Ctx.WriteString("hello world!")
+}
+
 func main() {
-  log.Println("hahaha");
+	web.Router("/", &MainController{})
+	web.Run()
 }
